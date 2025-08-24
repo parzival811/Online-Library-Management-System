@@ -51,7 +51,13 @@ int main() {
         printf("Enter your choice: ");
 
         int choice;
-        scanf("%d", &choice);
+        if (scanf("%d", &choice) != 1) {
+            // Clear the input buffer if scanf fails
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF);
+            printf("Invalid input. Please enter a number.\n");
+            continue;
+        }
 
         char buffer[BUFFER_SIZE];
         memset(buffer, 0, sizeof(buffer));
