@@ -55,7 +55,6 @@ int main() {
     int sockfd, client_sockfd;
     struct sockaddr_in server_addr, client_addr;
     socklen_t addr_size;
-    char buffer[BUFFER_SIZE];
 
     // Create socket
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
@@ -302,7 +301,7 @@ void save_books() {
 bool register_user(char *username, char *password, int flag) {
     pthread_mutex_lock(&lock);
 
-    //delay for consurrency check
+    //delay for concurrency check
     //sleep(5);
     
     // Check if the username already exists
@@ -338,7 +337,7 @@ bool authenticate_user(char *username, char *password, int *admin_flag) {
 void add_book(char *title, char *author, char *isbn) {
     pthread_mutex_lock(&lock);
 
-    //delay for consurrency check
+    //delay for concurrency check
     //sleep(5);
     
     strcpy(books[num_books].title, title);
@@ -354,7 +353,7 @@ void add_book(char *title, char *author, char *isbn) {
 void delete_book(char *title) {
     pthread_mutex_lock(&lock);
 
-    //delay for consurrency check
+    //delay for concurrency check
     //sleep(5);
 
     for (int i = 0; i < num_books; i++) {
@@ -378,7 +377,7 @@ void delete_book(char *title) {
 void modify_book(char *title, char *author, char *isbn) {
     pthread_mutex_lock(&lock);
 
-    //delay for consurrency check
+    //delay for concurrency check
     //sleep(5);
 
     for (int i = 0; i < num_books; i++) {
@@ -407,7 +406,7 @@ void search_book(char *title, char *buffer) {
 void borrow_book(char *username, char *title, char *buffer) {
     pthread_mutex_lock(&lock);
 
-    //delay for consurrency check
+    //delay for concurrency check
     //sleep(5);
 
     FILE *file = fopen("book_user.txt", "a+");
@@ -449,7 +448,7 @@ void borrow_book(char *username, char *title, char *buffer) {
 void return_book(char *username, char *title, char *buffer) {
     pthread_mutex_lock(&lock);
 
-    //delay for consurrency check
+    //delay for concurrency check
     //sleep(5);
 
     FILE *file = fopen("book_user.txt", "r+");
